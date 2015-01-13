@@ -1,11 +1,13 @@
 #!/usr/bin/expect
-set timeout 6000
-spawn /usr/bin/ssh -N  -D 7070 -p 1399 boa@23.95.57.193
+set timeout 60
+spawn /usr/bin/ssh -vN  -p 22 tb3974264@106.186.123.46 -D 127.0.0.1:7070
+
+
 expect {
 	"password:" {
-		send "eyo3\r"
+		send "508669\r"
 	}
 }
 interact {
-	timeout 6000 { send " "}
+	timeout  60{ send " "}
 }
