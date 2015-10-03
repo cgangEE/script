@@ -1,0 +1,3 @@
+cat /usr/include/cg_head.h > _$1
+cat $1 >> _$1
+g++ _$1 -o ${1:0:${#1}-4}

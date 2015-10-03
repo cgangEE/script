@@ -1,0 +1,43 @@
+" Configuration file for vim
+set modelines=0		" CVE-2007-2438
+
+" Normally we use vim-extensions. If you want true vi-compatibility
+" remove change the following statements
+set nocompatible	" Use Vim defaults instead of 100% vi compatibility
+set backspace=2		" more powerful backspacing
+
+" Don't write backup file if vim is being called by "crontab -e"
+au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
+" Don't write backup file if vim is being called by "chpass"
+au BufWrite /private/etc/pw.* set nowritebackup nobackup
+
+set mouse=a
+set nu
+set history=4000
+set backspace=2
+set shiftwidth=4
+set tabstop=4
+set cindent
+syntax on
+
+func! R()
+	exec ":w"
+	if &filetype == 'cpp'
+		exec "!clear&&g++ %<.cpp -o %<"
+		exec "!./%<"
+	elseif &filetype == "java"
+		exec "!clear&&javac %"
+		exec "!java %<"
+	endif
+endfunc
+
+noremap<F9> :call R()<CR>
+
+vmap "+y :w !pbcopy<CR><CR> 
+nmap "+p :r !pbpaste<CR><CR> 
+
+iabbrev cg Gang Chen
+inoremap jk <c-c>
+
+
+	
