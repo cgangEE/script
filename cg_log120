@@ -1,0 +1,1 @@
+ssh gchen@112.74.35.1 -X -p 2225  -t 'tmux list-session; if [[ $? -eq  0 ]]; then tmux attach; else tmux;fi'
